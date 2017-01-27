@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8A82B3FA-AE80-471C-BA85-D0F12BC67C8D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZzukBot</RootNamespace>
+    <AssemblyName>ZzukBot</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Release\Internal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\Release\Internal\ZzukBot.XML</DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\Internal\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <DocumentationFile>..\Release\Internal\ZzukBot.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fasm.NET">
+      <HintPath>..\Libs\Fasm.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\Enums.cs" />
+    <Compile Include="Constants\GameConstants.cs" />
+    <Compile Include="Constants\Strings.cs" />
+    <Compile Include="Constants\Structs.cs" />
+    <Compile Include="Constants\WinImports.cs" />
+    <Compile Include="Engines\EngineManager.cs" />
+    <Compile Include="FSM\Engine.cs" />
+    <Compile Include="FSM\State.cs" />
+    <Compile Include="GreyMagic\AllocatedMemory.cs" />
+    <Compile Include="GreyMagic\ExternalProcessReader.cs" />
+    <Compile Include="GreyMagic\InProcessMemoryReader.cs" />
+    <Compile Include="GreyMagic\Internals\DetourManager.cs" />
+    <Compile Include="GreyMagic\Internals\Manager.cs" />
+    <Compile Include="GreyMagic\Internals\PatchManager.cs" />
+    <Compile Include="GreyMagic\MarshalCache.cs" />
+    <Compile Include="GreyMagic\MemoryBase.cs" />
+    <Compile Include="GreyMagic\MemoryProtectionOperation.cs" />
+    <Compile Include="GreyMagic\MissingAttributeException.cs" />
+    <Compile Include="GreyMagic\Native\Imports.cs" />
+    <Compile Include="GreyMagic\Native\PeHeaderParser.cs" />
+    <Compile Include="GreyMagic\SafeMemoryHandle.cs" />
+    <Compile Include="GreyMagic\Utilities.cs" />
+    <Compile Include="Engines\CustomClass\CreatureType.cs" />
+    <Compile Include="Engines\CustomClass\Objects\_Pet.cs" />
+    <Compile Include="Engines\CustomClass\Objects\_Target.cs" />
+    <Compile Include="Engines\CustomClass\Objects\_Unit.cs" />
+    <Compile Include="Engines\CustomClass\CCManager.cs" />
+    <Compile Include="Engines\CustomClass\CodeCompiler.cs" />
+    <Compile Include="Engines\CustomClass\CustomClass.cs" />
+    <Compile Include="Engines\CustomClass\Objects\_Player.cs" />
+    <Compile Include="Engines\CustomClass\PlayerClass.cs" />
+    <Compile Include="Engines\Grind\Grinder.cs" />
+    <Compile Include="Engines\Grind\GrindProfile.cs" />
+    <Compile Include="Engines\Grind\Info\BreakHelper.cs" />
+    <Compile Include="Engines\Grind\Info\Path\Base\BasePath.cs" />
+    <Compile Include="Engines\Grind\Info\Path\Base\SubPath.cs" />
+    <Compile Include="Engines\Grind\Info\Path\pathForceBackup.cs" />
+    <Compile Include="Engines\Grind\Info\Path\pathBackup.cs" />
+    <Compile Include="Engines\Grind\Info\Path\PathManager.cs" />
+    <Compile Include="Engines\Grind\Info\Path\PathSafeGhostwalk.cs" />
+    <Compile Include="Engines\Grind\Info\RareSpotter.cs" />
+    <Compile Include="Engines\Grind\Info\SpiritWalk.cs" />
+    <Compile Include="Engines\Grind\Shared.cs" />
+    <Compile Include="Engines\Grind\States\stateAfterFightToPath.cs" />
+    <Compile Include="Engines\Grind\States\stateStartBreak.cs" />
+    <Compile Include="Engines\Grind\States\StateWaitAfterFight.cs" />
+    <Compile Include="Engines\Grind\States\StateDoRandomShit.cs" />
+    <Compile Include="Engines\Grind\States\stateWalkBackToGrind.cs" />
+    <Compile Include="Engines\Grind\StuckHelper.cs" />
+    <Compile Include="GUI Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engines\ProfileCreation\ProfileCreator.cs" />
+    <Compile Include="Helpers\Calc.cs" />
+    <Compile Include="Helpers\DebugAssist.cs" />
+    <Compile Include="Helpers\IrcDotNet\CircularBufferStream.cs" />
+    <Compile Include="Helpers\IrcDotNet\Collections\CollectionsUtilities.cs" />
+    <Compile Include="Helpers\IrcDotNet\Collections\ReadOnlyDictionary.cs" />
+    <Compile Include="Helpers\IrcDotNet\Collections\ReadOnlySet.cs" />
+    <Compile Include="Helpers\IrcDotNet\CollectionUtilities.cs" />
+    <Compile Include="Helpers\IrcDotNet\Ctcp\CtcpClient.cs" />
+    <Compile Include="Helpers\IrcDotNet\Ctcp\CtcpClientMessageProcessing.cs" />
+    <Compile Include="Helpers\IrcDotNet\Ctcp\CtcpClientMessageSending.cs" />
+    <Compile Include="Helpers\IrcDotNet\Ctcp\CtcpEventArgs.cs" />
+    <Compile Include="Helpers\IrcDotNet\DebugUtilities.cs" />
+    <Compile Include="Helpers\IrcDotNet\IIrcFloodPreventer.cs" />
+    <Compile Include="Helpers\IrcDotNet\IIrcMessageReceiveHandler.cs" />
+    <Compile Include="Helpers\IrcDotNet\IIrcMessageReceiver.cs" />
+    <Compile Include="Helpers\IrcDotNet\IIrcMessageSendHandler.cs" />
+    <Compile Include="Helpers\IrcDotNet\IIrcMessageSource.cs" />
+    <Compile Include="Helpers\IrcDotNet\IIrcMessageTarget.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcChannel.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcChannelCollection.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcChannelInfo.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcChannelUser.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcChannelUserCollection.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcClient.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcClientMessageProcessing.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcClientMessageSending.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcEventArgs.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcLocalUser.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcNetworkInfo.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcRegistrationInfo.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcServer.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcServerInfo.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcServerStatisticalEntry.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcStandardFloodPreventer.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcTargetMask.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcUser.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcUserCollection.cs" />
+    <Compile Include="Helpers\IrcDotNet\IrcUtilities.cs" />
+    <Compile Include="Helpers\IrcDotNet\MessageProcessorAttribute.cs" />
+    <Compile Include="Helpers\IrcDotNet\ReflectionUtilities.cs" />
+    <Compile Include="Helpers\IrcDotNet\SafeLineReader.cs" />
+    <Compile Include="Helpers\IrcDotNet\StandardIrcClient.cs" />
+    <Compile Include="Helpers\IrcDotNet\TextUtilities.cs" />
+    <Compile Include="Helpers\IrcDotNet\TwitchIrcClient.cs" />
+    <Compile Include="Helpers\IrcMonitor.cs" />
+    <Compile Include="Helpers\Wait.cs" />
+    <Compile Include="Engines\Grind\Info.cs" />
+    <Compile Include="Engines\Grind\Info\Combat.cs" />
+    <Compile Include="Engines\Grind\Info\Loot.cs" />
+    <Compile Include="Engines\Grind\Info\Path\PathToUnit.cs" />
+    <Compile Include="Engines\Grind\Info\Path\PathToPosition.cs" />
+    <Compile Include="Engines\Grind\Info\Path\PathAfterFightToWaypoint.cs" />
+    <Compile Include="Engines\Grind\Info\Rest.cs" />
+    <Compile Include="Engines\Grind\Info\Target.cs" />
+    <Compile Include="Engines\Grind\Info\Vendor.cs" />
+    <Compile Include="Engines\Grind\Info\Waypoints.cs" />
+    <Compile Include="Engines\Grind\States\StateFindTarget.cs" />
+    <Compile Include="Engines\Grind\States\stateApproachTarget.cs" />
+    <Compile Include="Engines\Grind\States\stateFight.cs" />
+    <Compile Include="Engines\Grind\States\stateBuff.cs" />
+    <Compile Include="Engines\Grind\States\StateGhostWalk.cs" />
+    <Compile Include="Engines\Grind\States\StateRepair.cs" />
+    <Compile Include="Engines\Grind\States\StateLoot.cs" />
+    <Compile Include="Engines\Grind\States\StateReleaseSpirit.cs" />
+    <Compile Include="Engines\Grind\States\stateRest.cs" />
+    <Compile Include="Engines\Grind\States\StateIdle.cs" />
+    <Compile Include="Engines\Grind\States\StateLoadNextWaypoint.cs" />
+    <Compile Include="Engines\Grind\States\StateLoadNextHotspot.cs" />
+    <Compile Include="Engines\Grind\States\StateWalk.cs" />
+    <Compile Include="Engines\Grind\States\stateWalkToRepair.cs" />
+    <Compile Include="GUI Forms\CC Selector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI Forms\CC Selector.Designer.cs">
+      <DependentUpon>CC Selector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI Forms\RestockItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI Forms\RestockItem.Designer.cs">
+      <DependentUpon>RestockItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Helpers\Waypoint.cs" />
+    <Compile Include="Hooks\ChatHook.cs" />
+    <Compile Include="Mem\Extensions.cs" />
+    <Compile Include="Mem\GetEndScene.cs" />
+    <Compile Include="Mem\GlobalHooks.cs" />
+    <Compile Include="Mem\Libs.cs" />
+    <Compile Include="Mem\LoginBlock.cs" />
+    <Compile Include="Mem\LuaQueue.cs" />
+    <Compile Include="Mem\Relog.cs" />
+    <Compile Include="Mem\Functions.cs" />
+    <Compile Include="Mem\DirectX.cs" />
+    <Compile Include="Hooks\ErrorEnumHook.cs" />
+    <Compile Include="AntiWarden\HookWardenMemScan.cs" />
+    <Compile Include="Ingame\Inventory.cs" />
+    <Compile Include="Ingame\Spells.cs" />
+    <Compile Include="Mem\Hacks.cs" />
+    <Compile Include="Mem\Memory.cs" />
+    <Compile Include="GUI Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ingame\Navigation.cs" />
+    <Compile Include="Mem\ObjectManager.cs" />
+    <Compile Include="Mem\WindowProcHook.cs" />
+    <Compile Include="ObfuscationSettings.cs" />
+    <Compile Include="Objects\LocalPlayer.cs" />
+    <Compile Include="Objects\WoWGameObject.cs" />
+    <Compile Include="Objects\WoWItem.cs" />
+    <Compile Include="Objects\WoWObject.cs" />
+    <Compile Include="Objects\WoWUnit.cs" />
+    <Compile Include="Constants\Offsets.cs" />
+    <Compile Include="OOP\Launch.cs" />
+    <Compile Include="OOP\Settings.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AntiWarden\HookModule32.cs" />
+    <Compile Include="Server\DownloadedOffsets.cs" />
+    <Compile Include="Server\SslClient.cs" />
+    <Compile Include="Server\SslEvents.cs" />
+    <Compile Include="Server\SslHandler.cs" />
+    <Compile Include="Settings\OptionManager.cs" />
+    <Compile Include="Settings\Options.cs" />
+    <Compile Include="Settings\Paths.cs" />
+    <EmbeddedResource Include="GUI Forms\CC Selector.resx">
+      <DependentUpon>CC Selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI Forms\RestockItem.resx">
+      <DependentUpon>RestockItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\beep" />
+    <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zb.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="zb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FastCallDll.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navigation.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>if defined EAZFUSCATOR_NET_HOME (if /I "$(ConfigurationName)" == "Release" Eazfuscator.NET.exe "$(TargetPath)" --msbuild-project-path "$(ProjectPath)" --msbuild-project-configuration "$(ConfigurationName)" --msbuild-project-platform "$(PlatformName)" --msbuild-solution-path "$(SolutionPath)" -n --newline-flush -v 5.1) else (echo Eazfuscator.NET obfuscator is not installed on this machine. Obfuscation will be skipped.)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
