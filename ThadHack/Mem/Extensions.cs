@@ -16,6 +16,15 @@ namespace ZzukBot.Mem
     /// </summary>
     public static class Extensions
     {
+        internal static string BToString(this byte[] value)
+        {
+            return Encoding.Unicode.GetString(value);
+        }
+        internal static byte[] ToByte(this string value)
+        {
+            return Encoding.Unicode.GetBytes(value);
+        }
+
         static Random _rnd = new Random();
         internal static string GenLuaVarName(this string name)
         {

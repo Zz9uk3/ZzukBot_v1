@@ -11,11 +11,9 @@
     <RootNamespace>ZzukBot</RootNamespace>
     <AssemblyName>ZzukBot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,6 +28,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -67,6 +66,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -135,6 +135,7 @@
     <Compile Include="Engines\ProfileCreation\ProfileCreator.cs" />
     <Compile Include="Helpers\Calc.cs" />
     <Compile Include="Helpers\DebugAssist.cs" />
+    <Compile Include="Helpers\HardwareId.cs" />
     <Compile Include="Helpers\IrcDotNet\CircularBufferStream.cs" />
     <Compile Include="Helpers\IrcDotNet\Collections\CollectionsUtilities.cs" />
     <Compile Include="Helpers\IrcDotNet\Collections\ReadOnlyDictionary.cs" />
@@ -254,10 +255,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AntiWarden\HookModule32.cs" />
-    <Compile Include="Server\DownloadedOffsets.cs" />
-    <Compile Include="Server\SslClient.cs" />
-    <Compile Include="Server\SslEvents.cs" />
-    <Compile Include="Server\SslHandler.cs" />
+    <Compile Include="Server\AuthClient\AuthClientHandler.cs" />
+    <Compile Include="Server\AuthClient\AuthProcessor.cs" />
+    <Compile Include="Server\AuthClient\SendOvers.cs" />
+    <Compile Include="Server\Models\PacketModel.cs" />
     <Compile Include="Settings\OptionManager.cs" />
     <Compile Include="Settings\Options.cs" />
     <Compile Include="Settings\Paths.cs" />
@@ -342,6 +343,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>if defined EAZFUSCATOR_NET_HOME (if /I "$(ConfigurationName)" == "Release" Eazfuscator.NET.exe "$(TargetPath)" --msbuild-project-path "$(ProjectPath)" --msbuild-project-configuration "$(ConfigurationName)" --msbuild-project-platform "$(PlatformName)" --msbuild-solution-path "$(SolutionPath)" -n --newline-flush -v 5.1) else (echo Eazfuscator.NET obfuscator is not installed on this machine. Obfuscation will be skipped.)</PostBuildEvent>
+    <PostBuildEvent>if defined EAZFUSCATOR_NET_HOME (if /I "$(ConfigurationName)" == "Release" Eazfuscator.NET.exe "$(TargetPath)" --msbuild-project-path "$(ProjectPath)" --msbuild-project-configuration "$(ConfigurationName)" --msbuild-project-platform "$(PlatformName)" --msbuild-solution-path "$(SolutionPath)" -n --newline-flush -v 5.5) else (echo Eazfuscator.NET obfuscator is not installed on this machine. Obfuscation will be skipped.)</PostBuildEvent>
   </PropertyGroup>
 </Project>

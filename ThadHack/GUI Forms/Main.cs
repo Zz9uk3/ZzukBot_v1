@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZzukBot.Constants;
 using ZzukBot.Engines;
@@ -16,7 +17,7 @@ using ZzukBot.Hooks;
 using ZzukBot.Ingame;
 using ZzukBot.Mem;
 using ZzukBot.Properties;
-using ZzukBot.Server;
+using ZzukBot.Server.AuthClient;
 using ZzukBot.Settings;
 
 namespace ZzukBot.GUI_Forms
@@ -25,8 +26,6 @@ namespace ZzukBot.GUI_Forms
     internal partial class Main : Form
     {
         internal static Main MainForm;
-
-        private SslHandler AuthHandler;
 
         #region Constructor
 
@@ -38,16 +37,29 @@ namespace ZzukBot.GUI_Forms
             InitializeComponent();
             Text += " - " + Assembly.GetExecutingAssembly().GetName().Version;
             PrepareForLaunch();
-            var login = new LoginForm();
-            if (login.ShowDialog() == DialogResult.OK)
+            while (true)
             {
-                AuthHandler.StartAuth(login.Email, login.Password);
+                using (var login = new LoginForm())
+                {
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        string reason;
+                        if (AuthProcessor.Instance.Auth(login.Email, login.Password, out reason))
+                        {
+                            Task.Run(() => EndLaunchPrepare());
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Authentication failed: {reason}");
+                        }
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
+                }
             }
-            else
-            {
-                Environment.Exit(0);
-            }
-            login.Dispose();
         }
 
         public sealed override string Text
@@ -65,7 +77,6 @@ namespace ZzukBot.GUI_Forms
             Enabled = false;
             OptionManager.LoadXmlSettings();
             LoginBlock.Enable();
-            AuthHandler = new SslHandler();
         }
 
         [Obfuscation(Feature = "virtualization", Exclude = false)]

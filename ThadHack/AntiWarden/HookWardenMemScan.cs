@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ZzukBot.Mem;
-using ZzukBot.Server;
+using ZzukBot.Server.AuthClient;
 using ZzukBot.Settings;
 using Ptr = ZzukBot.Constants.Offsets;
 
@@ -156,25 +156,25 @@ namespace ZzukBot.AntiWarden
                     {
                         string[] asmCodeOnline =
                         {
-                            DownloadedOffsets.WardenDetour[0],
-                            DownloadedOffsets.WardenDetour[1],
-                            DownloadedOffsets.WardenDetour[2],
-                            DownloadedOffsets.WardenDetour[3],
-                            DownloadedOffsets.WardenDetour[4],
-                            DownloadedOffsets.WardenDetour[5],
-                            DownloadedOffsets.WardenDetour[6],
-                            DownloadedOffsets.WardenDetour[7],
-                            DownloadedOffsets.WardenDetour[8],
-                            DownloadedOffsets.WardenDetour[9],
-                            DownloadedOffsets.WardenDetour[10],
-                            DownloadedOffsets.WardenDetour[11],
-                            DownloadedOffsets.WardenDetour[12],
-                            DownloadedOffsets.WardenDetour[13] + " " + (uint) AddrToWardenMemCpy,
-                            DownloadedOffsets.WardenDetour[14],
-                            DownloadedOffsets.WardenDetour[15],
-                            DownloadedOffsets.WardenDetour[16],
-                            DownloadedOffsets.WardenDetour[17],
-                            DownloadedOffsets.WardenDetour[18] + " " + (uint) (memScanPtr + 0x24)
+                            SendOvers.WardenMemCpyDetour[0],
+                            SendOvers.WardenMemCpyDetour[1],
+                            SendOvers.WardenMemCpyDetour[2],
+                            SendOvers.WardenMemCpyDetour[3],
+                            SendOvers.WardenMemCpyDetour[4],
+                            SendOvers.WardenMemCpyDetour[5],
+                            SendOvers.WardenMemCpyDetour[6],
+                            SendOvers.WardenMemCpyDetour[7],
+                            SendOvers.WardenMemCpyDetour[8],
+                            SendOvers.WardenMemCpyDetour[9],
+                            SendOvers.WardenMemCpyDetour[10],
+                            SendOvers.WardenMemCpyDetour[11],
+                            SendOvers.WardenMemCpyDetour[12],
+                            SendOvers.WardenMemCpyDetour[13].Replace("[|addr|]", "0x" + ((uint) AddrToWardenMemCpy).ToString("X")),
+                            SendOvers.WardenMemCpyDetour[14],
+                            SendOvers.WardenMemCpyDetour[15],
+                            SendOvers.WardenMemCpyDetour[16],
+                            SendOvers.WardenMemCpyDetour[17],
+                            SendOvers.WardenMemCpyDetour[18].Replace("[|addr|]", "0x" + ((uint) (memScanPtr + 0x24)).ToString("X"))
                         };
                         WardenMemCpyDetourPtr = Memory.InjectAsm(asmCodeOnline, "WardenMemCpyDetour");
                     }
@@ -193,14 +193,14 @@ namespace ZzukBot.AntiWarden
             var addrToDetour = Marshal.GetFunctionPointerForDelegate(_modifyWarden);
             string[] asmCode =
             {
-                "MOV [0xCE8978], EAX",
-                "pushfd",
-                "pushad",
-                "push EAX",
-                "call " + (uint) addrToDetour,
-                "popad",
-                "popfd",
-                "jmp 0x006CA233"
+                SendOvers.WardenLoadDetour[0],
+                SendOvers.WardenLoadDetour[1],
+                SendOvers.WardenLoadDetour[2],
+                SendOvers.WardenLoadDetour[3],           
+                SendOvers.WardenLoadDetour[4].Replace("[|addr|]", ((uint)addrToDetour).ToString()),
+                SendOvers.WardenLoadDetour[5],
+                SendOvers.WardenLoadDetour[6],
+                SendOvers.WardenLoadDetour[7],      
             };
             var WardenDetour = Memory.InjectAsm(asmCode, "WardenLoadDetour");
             Memory.InjectAsm(0x006CA22E, "jmp " + WardenDetour, "WardenLoadDetourJmp");

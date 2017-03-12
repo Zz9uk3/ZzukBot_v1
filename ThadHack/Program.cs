@@ -15,6 +15,7 @@ using ZzukBot.Helpers;
 using ZzukBot.OOP;
 using ZzukBot.Properties;
 using ZzukBot.Settings;
+using System.Management;
 
 namespace ZzukBot
 {
