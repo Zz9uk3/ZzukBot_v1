@@ -1106,11 +1106,9 @@ namespace ZzukBot.Constants
         {
             internal static int GotLoot = 0xB4;
 
-            //internal static int SummonedByGuid = 0x30;
-            internal static int SummonedByGuid = 0x0;
+            internal static int SummonedByGuid = 0x30;
 
-            //internal static int NpcId = 0xE74;
-            internal static int NpcId = 0x0;
+            internal static int NpcId = 0xE74;
 
             internal static int DynamicFlags = 0x23C;
             internal static int Flags = 0xB8;
@@ -1119,8 +1117,7 @@ namespace ZzukBot.Constants
             internal static int CreatedByGuid = 0x38;
             internal static int GameObjectCreatedByGuid = 0x18;
 
-            //internal static int movementFlags = 0x9E8;
-            internal static int movementFlags = 0x0;
+            internal static int movementFlags = 0x9E8;
 
             internal static int Health = 0x58;
             internal static int MaxHealth = 0x70;
