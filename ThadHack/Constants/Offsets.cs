@@ -1076,7 +1076,7 @@ namespace ZzukBot.Constants
             internal static int PosY = 0x9BC;
             internal static int PosZ = 0x9BC + 4;
             //internal static int AuraBase = 0xBC;
-            internal static int AuraBase = 0x8A;
+            //internal static int AuraBase = 0x8A;
             internal static int DebuffBase = 0x13C;
 
             internal static int NameBase = 0xB30;

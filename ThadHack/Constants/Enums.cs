@@ -36,10 +36,10 @@ namespace ZzukBot.Constants
         internal static class DynamicFlags
         {
             internal static uint IsMarked = 0x2;
-            internal static uint CanBeLooted = 0x1;
-            internal static uint TappedByMe = 0x1;
-            internal static uint TappedByOther = 0x1;
-            internal static uint Untouched = 0x1;
+            internal static uint CanBeLooted = 0xD;
+            internal static uint TappedByMe = 0xC;
+            internal static uint TappedByOther = 0x4;
+            internal static uint Untouched = 0x0;
             internal static int AuraBase = 0xBC;
             internal static int NextAura = 4;
             //internal static uint CanBeLooted = 0xD;
