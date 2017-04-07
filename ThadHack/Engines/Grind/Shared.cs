@@ -20,7 +20,7 @@ namespace ZzukBot.Engines.Grind
             {
                 if (Wait.For("RandomJump2", ran.Next(30000, 50000)))
                 {
-                    Functions.DoString("Jump()");
+                    //Functions.DoString("Jump()");
                 }
             }
         }
